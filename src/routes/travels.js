@@ -9,7 +9,7 @@ import {
   findTravelById,
   getAllTravels,
   updateTravel,
-} from '../database/travels.js';
+} from '../database/structure/travels.js';
 import { authGuard } from '../middlewares/auth-guard.js';
 
 export const travelRoutes = Router();

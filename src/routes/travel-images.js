@@ -6,7 +6,7 @@ import { API_HOST, PUBLIC_DIR } from '../constants.js';
 import {
   assertTravelExists,
   assertUserIsTravelOwner,
-} from '../database/travels.js';
+} from '../database/structure/travels.js';
 import { parseTravelImage } from '../validations/images.js';
 import { convertTravelImageToWebp } from '../utils/convert-to-webp.js';
 import { authGuard } from '../middlewares/auth-guard.js';
@@ -15,7 +15,7 @@ import {
   deleteTravelImage,
   getTravelImageById,
   saveTravelImage,
-} from '../database/travel-images.js';
+} from '../database/structure/travel-images.js';
 
 export const travelImagesRoutes = Router();
 

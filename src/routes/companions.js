@@ -3,14 +3,14 @@ import { asyncHandler } from '../utils/async-handler.js';
 import {
   assertTravelExists,
   assertUserIsTravelOwner,
-} from '../database/travels.js';
+} from '../database/structure/travels.js';
 import {
   addCompanion,
   assertCompanionNotAdded,
   getCompanionsByTravelId,
   getTravelsCompanionsByUserId,
-} from '../database/companions.js';
-import { assertUserExists } from '../database/users.js';
+} from '../database/structure/companions.js';
+import { assertUserExists } from '../database/structure/users.js';
 import { authGuard } from '../middlewares/auth-guard.js';
 
 export const companionRoutes = Router();

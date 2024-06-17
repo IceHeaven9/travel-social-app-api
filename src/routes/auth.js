@@ -7,7 +7,7 @@ import {
   createUser,
   findUserByEmail,
   removeValidationCodeFromUser,
-} from '../database/users.js';
+} from '../database/structure/users.js';
 import jwt from 'jsonwebtoken';
 import { JWT_SECRET } from '../constants.js';
 import crypto from 'node:crypto';
@@ -119,8 +119,6 @@ authRoutes.post(
     }
 
     await removeValidationCodeFromUser(user.id);
-
-    // res.redirect(`${FRONTEND_HOST}/login?validated=true`);
 
     res.status(200).send();
   })
