@@ -7,3 +7,11 @@ export async function getCommentsCount(travelId) {
   );
   return commentCount;
 }
+
+export async function getComments(travelId) {
+  const [[comments]] = await db.query(
+    `SELECT * FROM comments  WHERE travelId = :travelId ORDER BY travelId DESC`,
+    { travelId }
+  );
+  return comments;
+}

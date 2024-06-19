@@ -1,16 +1,16 @@
 import { Router } from 'express';
-import { asyncHandler } from '../utils/async-handler.js';
-import { authGuard } from '../middlewares/auth-guard.js';
+import { asyncHandler } from '../../utils/async-handler.js';
+import { authGuard } from '../../middlewares/auth-guard.js';
 import {
   getUserProfile,
   updateUserProfile,
-} from '../database/structure/users.js';
-import { parseUserProfilePayload } from '../validations/users.js';
-import { API_HOST, PUBLIC_DIR } from '../constants.js';
+} from '../../database/structure/users.js';
+import { parseUserProfilePayload } from '../../validations/users.js';
+import { API_HOST, PUBLIC_DIR } from '../../constants.js';
 import crypto from 'node:crypto';
 import path from 'node:path';
 import fs from 'node:fs/promises';
-import { convertAvatarToWebp } from '../utils/convert-to-webp.js';
+import { convertAvatarToWebp } from '../../utils/convert-to-webp.js';
 
 export const userRoutes = Router();
 

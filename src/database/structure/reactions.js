@@ -10,3 +10,9 @@ export async function getReactionsCount(travelId) {
 
   return Number(reactionsCount);
 }
+
+export function getReactions(travelId) {
+  return db.query(`SELECT * FROM reactions WHERE travelId = :travelId`, {
+    travelId,
+  });
+}
