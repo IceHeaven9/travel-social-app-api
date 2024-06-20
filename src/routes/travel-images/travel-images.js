@@ -1,9 +1,22 @@
 import { Router } from 'express';
-import { addTravelPhotoRoutes } from './addTravelImage.js';
-import { deleteTravelImageRoutes } from './deleteTravelImage.js';
+
+import { asyncHandler } from '../../utils/async-handler.js';
+import { authGuard } from '../../middlewares/auth-guard.js';
+import { addTravelPhotoController } from '../../controllers/travel-images/addTravelImageController.js';
+import { deleteTravelImageController } from '../../controllers/travel-images/deleteTravelImageController.js';
 
 export const travelImagesRoutes = Router();
 
-travelImagesRoutes.use(addTravelPhotoRoutes);
+// add image
+travelImagesRoutes.post(
+  '/travels/:travelId/photos',
+  authGuard,
+  asyncHandler(addTravelPhotoController)
+);
 
-travelImagesRoutes.use(deleteTravelImageRoutes);
+// delete image
+travelImagesRoutes.delete(
+  '/travels/:travelId/photos/:photoId',
+  authGuard,
+  asyncHandler(deleteTravelImageController)
+);

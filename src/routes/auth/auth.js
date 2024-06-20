@@ -1,12 +1,13 @@
 import { Router } from 'express';
-import { validateEmailAuthRoutes } from './validate-email.js';
-import { loginAuthRoutes } from './login.js';
-import { registerAtuhRoute } from './register.js';
+import { asyncHandler } from '../../utils/async-handler.js';
+import { validateEmailController } from '../../controllers/auth/validate-email.js';
+import { registerAuthController } from '../../controllers/auth/registerController.js';
+import { loginController } from '../../controllers/auth/loginController.js';
 
 export const authRoutes = Router();
 
-authRoutes.use(registerAtuhRoute);
+authRoutes.post('/validate-email', asyncHandler(validateEmailController));
 
-authRoutes.use(loginAuthRoutes);
+authRoutes.post('/register', asyncHandler(registerAuthController));
 
-authRoutes.use(validateEmailAuthRoutes);
+authRoutes.post('/login', asyncHandler(loginController));

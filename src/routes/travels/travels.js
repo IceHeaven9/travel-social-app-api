@@ -1,18 +1,33 @@
 import { Router } from 'express';
-import { getAllTravelsRoutes } from './getAllTravels.js';
-import { findTravelByIdRoutes } from './findTravelById.js';
-import { createTravelRoutes } from './createTravel.js';
-import { updateTravelRoutes } from './updateTravel.js';
-import { deleteTravelRoutes } from './deleteTravel.js';
+import { asyncHandler } from '../../utils/async-handler.js';
+import { authGuard } from '../../middlewares/auth-guard.js';
+import { updateTravelController } from '../../controllers/travels/updateTravel.js';
+import { getAllTravelsController } from '../../controllers/travels/getAllTravels.js';
+import { findTravelByIdController } from '../../controllers/travels/findTravelById.js';
+import { deleteTravelController } from '../../controllers/travels/deleteTravel.js';
+import { createTravelController } from '../../controllers/travels/createTravel.js';
 
 export const travelRoutes = Router();
 
-travelRoutes.use(getAllTravelsRoutes);
+// update travel
+travelRoutes.patch(
+  '/travels/:travelId',
+  authGuard,
+  asyncHandler(updateTravelController)
+);
 
-travelRoutes.use(findTravelByIdRoutes);
+//get all travels
+travelRoutes.get('/travels', asyncHandler(getAllTravelsController));
 
-travelRoutes.use(createTravelRoutes);
+// find travel by id
+travelRoutes.get('/travels/:travelId', asyncHandler(findTravelByIdController));
 
-travelRoutes.use(updateTravelRoutes);
+// delete travel
+travelRoutes.delete(
+  '/travels/:travelId',
+  authGuard,
+  asyncHandler(deleteTravelController)
+);
 
-travelRoutes.use(deleteTravelRoutes);
+// create travel
+travelRoutes.post('/travels', authGuard, asyncHandler(createTravelController));

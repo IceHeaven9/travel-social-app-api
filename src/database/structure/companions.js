@@ -1,24 +1,18 @@
+import { generateError } from '../../utils/generateErrors.js';
 import { db } from './db.js';
 
-/**
- *  Get all companions of a travel
- */
 export async function getCompanionsByTravelId(travelId) {
   const [result] = await db.query(
-    `SELECT DISTINCT u.id, u.username, u.name, u.avatar 
-         FROM companions c
-         INNER JOIN users u ON c.userId = u.id
-         WHERE c.travelId = :travelId`,
+    `SELECT DISTINCT u.id, u.username, u.name, u.avatar
+    FROM companions c
+      INNER JOIN users u ON c.userId = u.id
+    WHERE c.travelId = :travelId`,
     { travelId }
   );
 
   return result;
 }
 
-/**
- *  Get all travel companions of a user
- *      user <-> ((travel) <-> travel-companions)
- */
 export async function getTravelsCompanionsByUserId(userId) {
   const [result] = await db.query(
     `SELECT DISTINCT u.id, u.username, u.name, u.avatar 
@@ -53,10 +47,6 @@ export async function assertCompanionNotAdded(travelId, companionId) {
   );
 
   if (result) {
-    throw {
-      status: 404,
-      name: 'COMPANION_ALREADY_ADDED',
-      message: 'The companion is already added to the travel',
-    };
+    throw generateError(400, 'ERROR', 'Companion already added');
   }
 }

@@ -1,3 +1,4 @@
+import { generateError } from '../../utils/generateErrors.js';
 import { getCommentsCount } from './comments.js';
 import { db } from './db.js';
 import { getMainImage } from './images.js';
@@ -34,11 +35,7 @@ export async function findTravelById(travelId) {
   );
 
   if (!travel) {
-    throw {
-      status: 404,
-      name: 'TRAVEL_NOT_FOUND',
-      message: 'The travel does not exist',
-    };
+    throw generateError(404, 'ERROR', 'TRAVEL_NOT_FOUND');
   }
 
   return {
@@ -84,11 +81,7 @@ export async function assertTravelExists(travelId) {
   );
 
   if (result.length == 0) {
-    throw {
-      status: 404,
-      name: 'TRAVEL_NOT_FOUND',
-      message: 'The travel does not exist',
-    };
+    throw generateError(404, 'ERROR', 'The travel does not exist');
   }
 }
 
@@ -100,10 +93,10 @@ export async function assertUserIsTravelOwner(userId, travelId) {
   );
 
   if (result.length == 0) {
-    throw {
-      status: 403,
-      name: 'NOT_TRAVEL_OWNER',
-      message: 'You are not the owner of this travel',
-    };
+    throw generateError(403, 'ERROR', 'You are not the owner of this travel');
   }
 }
+
+//  status: 403,
+//       name: 'NOT_TRAVEL_OWNER',
+//       message: 'You are not the owner of this travel',

@@ -10,6 +10,7 @@ import {
   deleteTravelImage,
   getTravelImageById,
 } from '../../database/structure/travel-images.js';
+import { generateError } from '../../utils/generateErrors.js';
 
 export const deleteTravelImageController = async (req, res) => {
   await assertTravelExists(req.params.travelId);
@@ -17,11 +18,11 @@ export const deleteTravelImageController = async (req, res) => {
 
   const travelImage = await getTravelImageById(req.params.photoId);
   if (!travelImage) {
-    throw {
-      status: 404,
-      name: 'TRAVEL_IMAGE_NOT_FOUND',
-      message: 'Travel image not found',
-    };
+    throw generateError(
+      404,
+      'TRAVEL_IMAGE_NOT_FOUND',
+      'travel image not found'
+    );
   }
 
   const filePath = path.join(

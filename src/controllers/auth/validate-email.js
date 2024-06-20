@@ -2,6 +2,7 @@ import {
   findUserByEmail,
   removeValidationCodeFromUser,
 } from '../../database/structure/users.js';
+import { generateError } from '../../utils/generateErrors.js';
 
 export const validateEmailController = async (req, res) => {
   const { email, code } = req.body;
@@ -9,27 +10,19 @@ export const validateEmailController = async (req, res) => {
   const user = await findUserByEmail(email);
 
   if (!user) {
-    throw {
-      status: 400,
-      name: 'INVALID_CODE',
-      message: 'The code is invalid',
-    };
+    throw generateError(400, 'INVALID CODE', 'the code is invalid');
   }
 
   if (!user.validationCode) {
-    throw {
-      status: 400,
-      name: 'EMAIL_ALREADY_VALIDATED',
-      message: 'The email is already validated',
-    };
+    throw generateError(
+      400,
+      'EMAIL_ALREDY_VALIDATED',
+      'the email is alredy validated'
+    );
   }
 
   if (user.validationCode !== code) {
-    throw {
-      status: 400,
-      name: 'INVALID_CODE',
-      message: 'The code is invalid',
-    };
+    throw generateError(400, 'INVALID CODE', 'the code is invalid');
   }
 
   await removeValidationCodeFromUser(user.id);
