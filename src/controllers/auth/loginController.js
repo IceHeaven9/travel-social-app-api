@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { JWT_SECRET } from '../../constants.js';
+import { JWT_SECRET } from '../../constants/constants.js';
 import bcrypt from 'bcrypt';
 import { findUserByEmail } from '../../database/structure/users.js';
 

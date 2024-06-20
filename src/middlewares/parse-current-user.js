@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { JWT_SECRET } from '../constants.js';
+import { JWT_SECRET } from '../constants/constants.js';
 
 export function parseCurrentUser(req, res, next) {
   const token = req.headers.authorization;

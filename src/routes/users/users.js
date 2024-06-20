@@ -6,7 +6,7 @@ import {
   updateUserProfile,
 } from '../../database/structure/users.js';
 import { parseUserProfilePayload } from '../../validations/users.js';
-import { API_HOST, PUBLIC_DIR } from '../../constants.js';
+import { API_HOST, PUBLIC_DIR } from '../../constants/constants.js';
 import crypto from 'node:crypto';
 import path from 'node:path';
 import fs from 'node:fs/promises';

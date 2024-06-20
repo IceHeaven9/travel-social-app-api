@@ -5,7 +5,7 @@ import {
   DB_PASS,
   DB_PORT,
   DB_USER,
-} from '../../constants.js';
+} from '../../constants/constants.js';
 
 async function getDB() {
   return createPool({

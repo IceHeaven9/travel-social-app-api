@@ -1,4 +1,4 @@
-import { FRONTEND_HOST } from '../constants.js';
+import { FRONTEND_HOST } from '../constants/constants.js';
 import { transport } from './email.js';
 
 export function sendValidationEmail({ name, email, validationCode }) {
