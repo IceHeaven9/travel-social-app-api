@@ -2,7 +2,7 @@ import { db } from './db.js';
 
 export async function saveTravelImage(travelId, url) {
   const [{ insertId }] = await db.query(
-    'INSERT INTO travelImages (travelId,url) VALUES (:travelId,:url)',
+    `INSERT INTO travelImages (travelId,url) VALUES (:travelId,:url)`,
     {
       travelId,
       url,
@@ -13,12 +13,12 @@ export async function saveTravelImage(travelId, url) {
 
 export async function getTravelImageById(id) {
   const [[travelImage]] = await db.query(
-    'SELECT * FROM travelImages WHERE id = :id',
+    `SELECT * FROM travelImages WHERE id = :id`,
     { id }
   );
   return travelImage;
 }
 
 export async function deleteTravelImage(id) {
-  await db.query('DELETE FROM travelImages WHERE id = :id', { id });
+  await db.query(`DELETE FROM travelImages WHERE id = :id`, { id });
 }

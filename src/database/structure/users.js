@@ -2,7 +2,7 @@ import { generateError } from '../../utils/generateErrors.js';
 import { db } from './db.js';
 
 export async function findUserByEmail(email) {
-  const [[user]] = await db.query('SELECT * FROM users WHERE email = :email', {
+  const [[user]] = await db.query(`SELECT * FROM users WHERE email = :email`, {
     email,
   });
 
@@ -11,7 +11,7 @@ export async function findUserByEmail(email) {
 
 export async function getUserInfo(userId) {
   const [[user]] = await db.query(
-    'SELECT id, username, name, avatar FROM users WHERE id = :userId',
+    `SELECT id, username, name, avatar FROM users WHERE id = :userId`,
     {
       userId,
     }
@@ -47,7 +47,7 @@ export async function assertUserExists(userId) {
 
 export async function getUserProfile(userId) {
   const [[user]] = await db.query(
-    'SELECT name, username, avatar FROM users WHERE id = :userId',
+    `SELECT name, username, avatar FROM users WHERE id = :userId`,
     {
       userId,
     }
@@ -58,7 +58,7 @@ export async function getUserProfile(userId) {
 
 export async function updateUserProfile({ name, username, avatar, userId }) {
   await db.query(
-    'UPDATE users SET name = :name, username = :username, avatar = :avatar WHERE id = :userId',
+    `UPDATE users SET name = :name, username = :username, avatar = :avatar WHERE id = :userId`,
     {
       name,
       username,
@@ -69,7 +69,7 @@ export async function updateUserProfile({ name, username, avatar, userId }) {
 }
 
 export async function removeValidationCodeFromUser(userId) {
-  await db.query('UPDATE users SET validationCode = NULL WHERE id = :userId', {
+  await db.query(`UPDATE users SET validationCode = NULL WHERE id = :userId`, {
     userId,
   });
 }
@@ -84,7 +84,7 @@ export async function assertEmailNotInUse(email) {
 
 export async function assertUsernameNotInUse(username) {
   const [[result]] = await db.query(
-    'SELECT username FROM users WHERE username = :username',
+    `SELECT username FROM users WHERE username = :username`,
     {
       username,
     }

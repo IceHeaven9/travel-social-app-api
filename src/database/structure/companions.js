@@ -29,7 +29,7 @@ export async function getTravelsCompanionsByUserId(userId) {
 
 export async function addCompanion(travelId, companionId) {
   await db.query(
-    'INSERT INTO companions (travelId, userId) VALUES(:travelId, :companionId)',
+    `INSERT INTO companions (travelId, userId) VALUES(:travelId, :companionId)`,
     {
       travelId,
       companionId,
@@ -39,7 +39,7 @@ export async function addCompanion(travelId, companionId) {
 
 export async function assertCompanionNotAdded(travelId, companionId) {
   const [[result]] = await db.query(
-    'SELECT * FROM companions WHERE userId = :companionId AND travelId = :travelId',
+    `SELECT * FROM companions WHERE userId = :companionId AND travelId = :travelId`,
     {
       travelId,
       companionId,

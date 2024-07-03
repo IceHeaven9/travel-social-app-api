@@ -30,7 +30,7 @@ export async function getAllTravels(offset = 0) {
 
 export async function findTravelById(travelId) {
   const [[travel]] = await db.query(
-    'SELECT * FROM travels WHERE id = :travelId',
+    `SELECT * FROM travels WHERE id = :travelId`,
     { travelId }
   );
 
@@ -96,7 +96,3 @@ export async function assertUserIsTravelOwner(userId, travelId) {
     throw generateError(403, 'ERROR', 'You are not the owner of this travel');
   }
 }
-
-//  status: 403,
-//       name: 'NOT_TRAVEL_OWNER',
-//       message: 'You are not the owner of this travel',
