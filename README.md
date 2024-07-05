@@ -66,6 +66,10 @@ Este proyecto consiste en la construcción desde cero de una API REST CRUD para 
         EMAIL_USER=tu_email@ejemplo.com
         EMAIL_PASSWORD=tu_password_email
 
+## Base de datos
+
+1. Asegurate de tener instalada la ultima version de MySQL server y ejecuta travelJournal.sql en VS Code o MYSQL Workbench.
+
 ## Uso
 
 1.  Iniciar el servidor:
