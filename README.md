@@ -113,3 +113,7 @@ Si deseas contribuir a este proyecto, por favor sigue los pasos a continuación:
 ## Contacto
 
 Para cualquier duda o consulta, puedes contactarme en cristhian_devfs@outlook.com.
+
+## Licencia
+
+© 2024 Cristhian Medrano Bonora. Todos los derechos reservados.
