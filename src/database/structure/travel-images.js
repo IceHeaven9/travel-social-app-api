@@ -19,6 +19,14 @@ export async function getTravelImageById(id) {
   return travelImage;
 }
 
+export async function getTravelImageByTravelId(travelId) {
+  const [travelImage] = await db.query(
+    'SELECT * FROM travelImages WHERE travelId = :travelId',
+    { travelId }
+  );
+  return travelImage;
+}
+
 export async function deleteTravelImage(id) {
   await db.query(`DELETE FROM travelImages WHERE id = :id`, { id });
 }

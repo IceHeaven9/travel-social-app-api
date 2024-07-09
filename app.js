@@ -4,14 +4,14 @@ import morgan from 'morgan';
 import { PORT, PUBLIC_DIR } from './src/constants/constants.js';
 
 // Route imports
-import { companionRoutes } from './src/routes/companions/companions.js';
+import { companionRoutes } from './src/routes/companions.js';
 import { parseCurrentUser } from './src/middlewares/parse-current-user.js';
-import { travelRoutes } from './src/routes/travels/travels.js';
-import { userRoutes } from './src/routes/users/users.js';
-import { commentRoutes } from './src/routes/comments/comments.js';
-import { reactionRoutes } from './src/routes/reactions/reactions.js';
-import { travelImagesRoutes } from './src/routes/travel-images/travel-images.js';
-import { authRoutes } from './src/routes/auth/auth.js';
+import { travelRoutes } from './src/routes/travels.js';
+import { userRoutes } from './src/routes/users.js';
+import { commentRoutes } from './src/routes/comments.js';
+import { reactionRoutes } from './src/routes/reactions.js';
+import { travelImagesRoutes } from './src/routes/travel-images.js';
+import { authRoutes } from './src/routes/auth.js';
 
 //Controller imports
 import { errorController } from './src/controllers/errors/errorController.js';

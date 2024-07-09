@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import { asyncHandler } from '../../utils/async-handler.js';
-import { addCompanionController } from '../../controllers/companions/addCompanion.js';
-import { authGuard } from '../../middlewares/auth-guard.js';
-import { getCompanionByTravelIdController } from '../../controllers/companions/getCompanionByTravelId.js';
-import { getCompanionByUserIdController } from '../../controllers/companions/getCompanionByUserId.js';
+import { asyncHandler } from '../utils/async-handler.js';
+import { addCompanionController } from '../controllers/companions/addCompanion.js';
+import { authGuard } from '../middlewares/auth-guard.js';
+import { getCompanionByTravelIdController } from '../controllers/companions/getCompanionByTravelId.js';
+import { getCompanionByUserIdController } from '../controllers/companions/getCompanionByUserId.js';
 
 export const companionRoutes = Router();
 
