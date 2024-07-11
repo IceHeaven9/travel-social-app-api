@@ -10,7 +10,7 @@ export const {
   //==========================
   PORT = 3000,
   API_HOST = 'http://localhost:3000',
-  FRONTEND_HOST = 'http://localhost:3000',
+  FRONTEND_HOST = 'http://localhost:5173',
   JWT_SECRET,
 
   //==========================

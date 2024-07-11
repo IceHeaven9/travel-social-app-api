@@ -1,8 +1,8 @@
 import express, { json } from 'express';
 import fileupload from 'express-fileupload';
 import morgan from 'morgan';
-import { PORT, PUBLIC_DIR } from './src/constants/constants.js';
-
+import { FRONTEND_HOST, PORT, PUBLIC_DIR } from './src/constants/constants.js';
+import cors from 'cors';
 // Route imports
 import { companionRoutes } from './src/routes/companions.js';
 import { parseCurrentUser } from './src/middlewares/parse-current-user.js';
@@ -23,6 +23,8 @@ app.listen(PORT, () => {
 });
 
 app.use(morgan('dev'));
+
+app.use(cors({ origin: FRONTEND_HOST }));
 
 app.use(express.static(PUBLIC_DIR));
 
