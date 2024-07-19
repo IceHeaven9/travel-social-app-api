@@ -8,7 +8,7 @@
 	"scripts": {
 		"dev": "nodemon src/app.js",
 		"start": "node src/app.js",
-		"init-db": "node src/database/data/initial-data.js",
+		"init-db": "node src/database/structure/travel-journal.js",
 		"demo-seeds": "node src/database/data/demo-seeds.js",
 		"initial-data": "node src/database/data/initial-data.js"
 	},
