@@ -135,7 +135,7 @@ Este proyecto consiste en la construcción desde cero de una API REST CRUD para 
 - **Editar comentario**: `PATCH /api/travels/:travelId/comments/:commentId`
 - **Eliminar comentario**: `DELETE /api/travels/:travelId/comments/commentId`
 
-### El front-end para esta API esta en desarrollo por lo que todavia se hacen modificaciones para cubrir las necesidades que surjan en un futuro, cualquier modificacion sera incluida en este Readme.
+### El front-end para esta API está en desarrollo, por lo que todavía se están haciendo modificaciones para cubrir las necesidades que surjan en el futuro. Cualquier modificación será incluida en este README.
 
 ## Contacto
 
