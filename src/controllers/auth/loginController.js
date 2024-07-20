@@ -3,6 +3,7 @@ import { findUserByEmail } from "../../database/users.js";
 import jwt from "jsonwebtoken";
 import { JWT_SECRET } from "../../constants.js";
 import { parseLoginPayload } from "../../validations/auth.js";
+import { generateError } from "../../utils/generateErrors.js";
 
 export const loginController = async (req, res) => {
 	const { email, password } = parseLoginPayload(req.body);
@@ -10,19 +11,15 @@ export const loginController = async (req, res) => {
 	const user = await findUserByEmail(email);
 
 	if (!user || !(await bcrypt.compare(password, user.password))) {
-		throw {
-			status: 400,
-			name: "INVALID_CREDENTIALS",
-			message: "Your email or password is incorrect",
-		};
+		throw generateError(
+			401,
+			"INVALID_CREDENTIALS",
+			"Invalid email or password"
+		);
 	}
 
 	if (user.validationCode) {
-		throw {
-			status: 400,
-			name: "EMAIL_NOT_VALIDATED",
-			message: "You need to validate your email before logging in",
-		};
+		throw generateError(401, "UNVERIFIED_EMAIL", "Email is not verified");
 	}
 
 	const token = jwt.sign(
