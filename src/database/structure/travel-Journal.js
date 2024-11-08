@@ -58,17 +58,6 @@ async function buildTravelJournalDatabase() {
   console.log('Travel Images Table Created');
 
   await connection.query(`
-        CREATE TABLE companions(
-            id INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-            travelId INTEGER UNSIGNED NOT NULL,
-            userId INTEGER UNSIGNED NOT NULL,
-            FOREIGN KEY (userId) REFERENCES users(id),
-            FOREIGN KEY (travelId) REFERENCES travels(id)
-        )
-    `);
-  console.log('Companions Table Created');
-
-  await connection.query(`
         CREATE TABLE reactions(
             id INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
             reactionType TINYINT NOT NULL,

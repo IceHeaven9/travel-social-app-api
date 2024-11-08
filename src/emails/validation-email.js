@@ -3,7 +3,7 @@ import { transport } from "./email.js";
 
 export function sendValidationEmail({ name, email, validationCode }) {
   transport.sendMail({
-    from: "Travel Journal <no-reply@travel-journal.com>",
+    from: "Travel Journal <cristhians7x@gmail.com>",
     to: `${name} <${email}>`,
     subject: "Welcome to TravelApp - Validate your email",
     html: `
